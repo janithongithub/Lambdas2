@@ -13,6 +13,10 @@ public class App {
             );
 
 
+            System.out.println(" ");
+            printCarsByColor(cars, "White");
+            System.out.println(" ");
+            printCarsPriceRange(cars, 17900, 25000);
 
         
         }
