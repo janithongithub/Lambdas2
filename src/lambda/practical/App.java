@@ -13,14 +13,46 @@ public class App {
             );
 
 
-            System.out.println(" ");
-            printCarsByColor(cars, "White");
-            System.out.println(" ");
-            printCarsPriceRange(cars, 17900, 25000);
+            
+            // printCarsByColor(cars, "White");
+            //printCarsPriceRange(cars, 17900, 25000);
+            printCars(cars, new CarCondition(){
+                @Override
+                public boolean test(Car c) {
+                    return c.getPrice() >= 17900 && c.getPrice() <= 25000;
+                    
+                }
+            });
 
+            printCars(cars, new CarCondition(){
+                @Override
+                public boolean test(Car c) {
+                    return c.getColor().equals("Blue");
+                    
+                }
+            });
         
+
+            
         }
 
+
+
+//----------------------------------------
+
+
+    public static void printCars(List<Car> cars, CarCondition condition){
+        for(Car c: cars){
+            if(condition.test(c)){
+                c.printCar();
+            }
+        }
+    }
+
+
+//----------------------------------------
+
+/*
     public static void printCarsPriceRange( List<Car> cars, int low, int high){
         for( Car c: cars){
             if(low <= c.getPrice() && c.getPrice() <= high){
@@ -37,7 +69,7 @@ public class App {
             }
         }
     }
-
+*/
 
 
 }
