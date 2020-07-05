@@ -13,9 +13,10 @@ public class App {
             );
 
 
-            
-            // printCarsByColor(cars, "White");
-            //printCarsPriceRange(cars, 17900, 25000);
+            /*version 1.0
+             printCarsByColor(cars, "White");
+            printCarsPriceRange(cars, 17900, 25000);
+            */
             printCars(cars, new CarCondition(){
                 @Override
                 public boolean test(Car c) {
@@ -31,16 +32,25 @@ public class App {
                     
                 }
             });
-        
+
+
+            //Lambda version 2.0
+            printCars(cars, (c) -> c.getPrice() >= 17900 && c.getPrice() <= 25000);
+            // for singlre line we don't need the return if it was multiple lines we need return and {}
+            // the c is from test(c) -> c.getPrice() >= 17900 && c.getPrice() <= 25000
+            //test(Car c) method is the only method in the functinal interface and it mapps to this lambda
 
             
-        }
+        }// end of main
+
+
 
 
 
 //----------------------------------------
 
 
+        // printcars(cars, condition)
     public static void printCars(List<Car> cars, CarCondition condition){
         for(Car c: cars){
             if(condition.test(c)){
@@ -52,7 +62,15 @@ public class App {
 
 //----------------------------------------
 
-/*
+
+
+
+
+
+
+
+
+/*              version 1.0
     public static void printCarsPriceRange( List<Car> cars, int low, int high){
         for( Car c: cars){
             if(low <= c.getPrice() && c.getPrice() <= high){
