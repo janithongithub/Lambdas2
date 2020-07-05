@@ -17,30 +17,36 @@ public class App {
              printCarsByColor(cars, "White");
             printCarsPriceRange(cars, 17900, 25000);
             */
-            printCars(cars, new CarCondition(){
+
+            System.out.println();
+            printCars(cars, new CarCondition<Car>(){
                 @Override
                 public boolean test(Car c) {
                     return c.getPrice() >= 17900 && c.getPrice() <= 25000;
-                    
+                 // this is an annonymous class implementation   
                 }
             });
 
-            printCars(cars, new CarCondition(){
+            printCars(cars, new CarCondition<Car>(){
                 @Override
                 public boolean test(Car c) {
                     return c.getColor().equals("Blue");
-                    
+                // this is an annonymous class implementation     
                 }
             });
 
 
+            
+
             //Lambda version 2.0
+            System.out.println("\nprinting cars in 17900 - 25000 range...");
             printCars(cars, (c) -> c.getPrice() >= 17900 && c.getPrice() <= 25000);
             // for singlre line we don't need the return if it was multiple lines we need return and {}
             // the c is from test(c) -> c.getPrice() >= 17900 && c.getPrice() <= 25000
             //test(Car c) method is the only method in the functinal interface and it mapps to this lambda
 
             //Lambda version 2.0
+            System.out.println("\nprinting Blue cars...");
             printCars(cars, (c) -> c.getColor().equals("Blue"));
             
         }// end of main
@@ -52,8 +58,8 @@ public class App {
 //----------------------------------------
 
 
-        // printcars(cars, condition)
-    public static void printCars(List<Car> cars, CarCondition condition){
+        // printcars(cars, condition) enhaance for loop
+    public static void printCars(List<Car> cars, CarCondition<Car> condition){
         for(Car c: cars){
             if(condition.test(c)){
                 c.printCar();
