@@ -40,6 +40,8 @@ public class App {
             // the c is from test(c) -> c.getPrice() >= 17900 && c.getPrice() <= 25000
             //test(Car c) method is the only method in the functinal interface and it mapps to this lambda
 
+            //Lambda version 2.0
+            printCars(cars, (c) -> c.getColor().equals("Blue"));
             
         }// end of main
 
