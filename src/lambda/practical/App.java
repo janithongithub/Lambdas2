@@ -2,6 +2,7 @@ package lambda.practical;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class App {
     public static void main(String[] args) {
@@ -19,22 +20,6 @@ public class App {
             */
 
             System.out.println();
-            printCars(cars, new Condition<Car>(){
-                @Override
-                public boolean test(Car c) {
-                    return c.getPrice() >= 17900 && c.getPrice() <= 25000;
-                 // this is an annonymous class implementation   
-                }
-            });
-
-            printCars(cars, new Condition<Car>(){
-                @Override
-                public boolean test(Car c) {
-                    return c.getColor().equals("Blue");
-                // this is an annonymous class implementation     
-                }
-            });
-
 
             
 
@@ -58,8 +43,9 @@ public class App {
 //----------------------------------------
 
 
-        // printcars(cars, condition) enhaance for loop
-    public static void printCars(List<Car> cars, Condition<Car> condition){
+
+    //Predicate is the inbuilt Generic FunctionalInterface provided by java that has a method returns a boolean
+    public static void printCars(List<Car> cars, Predicate<Car> condition){
         for(Car c: cars){
             if(condition.test(c)){
                 c.printCar();
@@ -73,29 +59,6 @@ public class App {
 
 
 
-
-
-
-
-
-/*              version 1.0
-    public static void printCarsPriceRange( List<Car> cars, int low, int high){
-        for( Car c: cars){
-            if(low <= c.getPrice() && c.getPrice() <= high){
-                c.printCar();
-            }
-        }
-    }
-
-
-    public static void printCarsByColor( List<Car> cars, String color){
-        for( Car c: cars){
-            if(c.getColor().equals(color)){
-                c.printCar();
-            }
-        }
-    }
-*/
 
 
 }
