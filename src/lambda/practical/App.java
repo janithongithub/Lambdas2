@@ -19,7 +19,7 @@ public class App {
             */
 
             System.out.println();
-            printCars(cars, new CarCondition<Car>(){
+            printCars(cars, new Condition<Car>(){
                 @Override
                 public boolean test(Car c) {
                     return c.getPrice() >= 17900 && c.getPrice() <= 25000;
@@ -27,7 +27,7 @@ public class App {
                 }
             });
 
-            printCars(cars, new CarCondition<Car>(){
+            printCars(cars, new Condition<Car>(){
                 @Override
                 public boolean test(Car c) {
                     return c.getColor().equals("Blue");
@@ -59,7 +59,7 @@ public class App {
 
 
         // printcars(cars, condition) enhaance for loop
-    public static void printCars(List<Car> cars, CarCondition<Car> condition){
+    public static void printCars(List<Car> cars, Condition<Car> condition){
         for(Car c: cars){
             if(condition.test(c)){
                 c.printCar();

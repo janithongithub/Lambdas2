@@ -1,7 +1,7 @@
 package lambda.practical;
 
 @FunctionalInterface
-public interface CarCondition<T> {
+public interface Condition<T> {
     public boolean test(T t);
     
 }
